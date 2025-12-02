@@ -1,82 +1,77 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="js/count.js"></script>
-    <link rel="icon" href="img/icon.png" />
-    <title>Ramadhan 2023 Countdown</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Ramadan Countdown 2026</title>
+    
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="img/icon.png" />
+    
+    <script defer src="js/count.js"></script> 
+    <script defer src="js/script.js"></script>
+    <script defer src="node_modules/@vercel/analytics/dist/index.js"></script>
 </head>
 
-<body onload="identify()">
+<body>
     <div class="lattern">
-        <img src="img/lattern.png" alt="" />
+        <img src="img/lattern.png" alt="Lantern Decoration" />
     </div>
-    <div class="top">
+
+    <header class="top">
         <p class="me-auto">
-            <a href="https://naemazam.com" target="_blank">
-					<b>Naem Azam</b>
-				</a>
+            <a href="#https://naemazam.com" target="_blank" rel="noopener noreferrer">
+                <b>Ramzan Mubarak</b>
+            </a>
         </p>
-        <label class="switch ms-auto">
-				<input type="checkbox" id="switch" onchange="toggleCheck()" />
-				<span class="slider"></span>
-			</label>
-    </div>
-    <div class="mid">
-        <h1>Ramadhan 2023</h1>
-        <div class="d-flex">
+        <label class="switch ms-auto" aria-label="Dark Mode Toggle">
+            <input type="checkbox" id="switch" />
+            <span class="slider"></span>
+        </label>
+    </header>
+
+    <main class="mid">
+        <h1 id="ramadan-title">Ramadan 2026</h1>
+        
+        <div class="d-flex countdown-container">
             <div class="card">
-                <h3 id="days"></h3>
+                <h3 id="days">00</h3>
                 <p>DAYS</p>
             </div>
             <div class="card">
-                <h3 id="hours"></h3>
+                <h3 id="hours">00</h3>
                 <p>HOURS</p>
             </div>
             <div class="card">
-                <h3 id="minutes"></h3>
+                <h3 id="minutes">00</h3>
                 <p>MINUTES</p>
             </div>
             <div class="card">
-                <h3 id="seconds"></h3>
+                <h3 id="seconds">00</h3>
                 <p>SECONDS</p>
             </div>
         </div>
-        <a href="mailto:#">
-				<img src="img/email.png" alt="Email" />
-			</a>
-        <a href="#">
-				<img src="img/linkedin.png" alt="LinkedIn" />
-			</a>
-        <a href="#">
-				<img src="img/ig.png" alt="Insta" />
-			</a>
-        <a href="https://github.com/naemazam">
-				<img src="img/github.png" alt="Github" />
-			</a>
-    </div>
-    <div class="bottom">
-        <a href="mailto:#">
-				<img src="img/email.png" alt="Email" />
-			</a>
-        <a href="#">
-				<img src="img/linkedin.png" alt="LinkedIn" />
-			</a>
-        <a href="#">
-				<img src="img/ig.png" alt="Insta" />
-			</a>
-        <a href="https://github.com/naemazam">
-				<img src="img/github.png" alt="Github" />
-			</a>
-    </div>
-    <div class="mosque">
-        <img src="img/mosque.png" alt="" />
-    </div>
-    <script defer src="node_modules/@vercel/analytics/dist/index.js"></script>
-    <script src="js/script.js"></script>
-</body>
+    </main>
 
+    <footer class="bottom">
+        <div class="social-links">
+            <a href="mailto:#" aria-label="Email">
+                <img src="img/email.png" alt="Email" />
+            </a>
+            <a href="#" aria-label="LinkedIn">
+                <img src="img/linkedin.png" alt="LinkedIn" />
+            </a>
+            <a href="#" aria-label="Instagram">
+                <img src="img/ig.png" alt="Instagram" />
+            </a>
+            <a href="https://github.com/naemazam" aria-label="Github">
+                <img src="img/github.png" alt="Github" />
+            </a>
+        </div>
+    </footer>
+
+    <div class="mosque">
+        <img src="img/mosque.png" alt="Mosque Silhouette" />
+    </div>
+</body>
 </html>
