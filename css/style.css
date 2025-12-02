@@ -1,313 +1,250 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap");
+/* --- Imports & Fonts --- */
+@import url("https://fonts.googleapis.com/css?family=Poppins:200i,400,600&display=swap");
+
 @font-face {
     font-family: "AwalRamadhan";
     src: url("../font/AwalRamadhan.ttf");
+    font-display: swap;
 }
 
-html {
+/* --- Global Variables (Colors) --- */
+:root {
+    --bg-light: #ffffff;
+    --text-light: #111111;
+    --card-light: rgba(0, 0, 0, 0.05);
+    
+    --bg-dark: #121212;
+    --text-dark: #ffffff;
+    --card-dark: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Base Styles --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    min-width: 500px;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
 }
 
 body {
-    height: 90%;
-    margin: 2%;
-    background-position: center;
-    background-size: cover;
-    position: relative;
-    font-family: "Poppins", sans-serif;
-    font-size: 25px;
-}
-
-a {
-    text-decoration: none;
-}
-
-b {
-    font-size: 25px;
-}
-
-button {
-    background-color: #222;
-    color: #fff;
-    height: 35px;
-    width: auto;
-    border: 1px #fff;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    -webkit-transition: 0.3s all;
-    transition: 0.3s all;
-}
-
-button:hover {
-    background-color: #fff;
-    color: #000;
-}
-
-hr {
-    margin: auto;
-    width: 40%;
-}
-
-p {
-    font-size: 20px;
-}
-
-#light {
-    background-color: #fff;
-    color: #111;
-    -webkit-transition: 0.3s all;
-    transition: 0.3s all;
-}
-
-#light .mid img,
-#light .bottom img {
-    filter: invert(100%);
-}
-
-#light a {
-    color: #111;
-}
-
-#light .card {
-    background: rgba(1, 1, 1, 0.1);
-}
-
-#dark {
-    background-color: #111;
-    color: #fff;
-    -webkit-transition: 0.3s all;
-    transition: 0.3s all;
-}
-
-#dark a {
-    color: #fff;
-}
-
-#dark .card {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-#dark .mosque img,
-#dark .lattern img {
-    filter: invert(100%);
-}
-
-.top {
-    padding-left: 3%;
-    padding-right: 3%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.mid {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    transform: translate(-50%, -50%);
+/* --- Light Mode --- */
+body#light {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+}
+body#light a { color: var(--text-light); }
+body#light .card { background: var(--card-light); }
+body#light .social-links img { filter: invert(0%); opacity: 0.8; } 
+
+/* --- Dark Mode --- */
+body#dark {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+body#dark a { color: var(--text-dark); }
+body#dark .card { background: var(--card-dark); border: 1px solid rgba(255,255,255,0.05); }
+body#dark .mosque img,
+body#dark .lattern img,
+body#dark .social-links img {
+    filter: invert(100%);
+    opacity: 0.8;
+}
+
+/* --- Header --- */
+header.top {
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+header.top a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* --- Main Content --- */
+main.mid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    cursor: grab;
-    -webkit-transition: 0.3s all;
-    transition: 0.3s all;
-    z-index: 2;
+    z-index: 5;
+    padding: 20px;
 }
 
 .mid h1 {
-    font-family: "AwalRamadhan";
-    font-size: 72px;
+    font-family: "AwalRamadhan", serif;
+    /* This makes font size responsive automatically */
+    font-size: clamp(3rem, 10vw, 5rem); 
+    margin-bottom: 2rem;
+    margin-top: 0;
 }
 
-.mid a {
-    display: none;
+/* --- Countdown Cards --- */
+.countdown-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
 }
 
-.bottom {
-    position: fixed;
-    bottom: 0;
-    left: 3%;
+.card {
+    padding: 15px;
+    width: 110px;
+    border-radius: 16px;
+    text-align: center;
+    animation: pop-in 0.8s;
+    backdrop-filter: blur(5px);
 }
 
-.mid a,
-.bottom a {
-    margin-left: auto;
-    margin-right: auto;
-    color: #fff;
-    text-decoration: none;
+.card h3 {
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 600;
 }
 
-.mid img,
-.bottom img {
+.card p {
+    font-size: 0.85rem;
+    margin: 5px 0 0 0;
+    text-transform: uppercase;
+}
+
+/* --- Footer --- */
+footer.bottom {
+    padding: 20px;
+    text-align: center;
+    z-index: 10;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links img {
+    height: 32px;
     width: auto;
-    height: 65px;
-    border-radius: 50%;
-    border: solid #fff 1px;
-    -webkit-transition: 0.3s all;
-    transition: 0.3s all;
+    transition: transform 0.2s;
 }
 
-.bottom img {
-    height: 45px;
+.social-links img:hover {
+    transform: scale(1.1);
 }
 
-.bottom img:hover {
-    width: auto;
-    height: 55px;
-}
-
+/* --- Images & Backgrounds --- */
 .lattern {
-    position: fixed;
-    top: -24px;
+    position: absolute;
+    top: 0;
     left: 0;
-    right: 0;
     width: 100%;
-    z-index: -1;
-    animation: up-down 0.75s;
+    z-index: 1;
+    pointer-events: none;
+    animation: swing 3s ease-in-out infinite alternate;
 }
 
 .mosque {
     position: fixed;
-    bottom: -12px;
+    bottom: 0;
     left: 0;
-    right: 0;
     width: 100%;
-    z-index: -1;
-    animation: down-up 0.75s;
+    z-index: 0;
+    pointer-events: none;
 }
 
-.mosque img,
-.lattern img {
-    display: flex;
-    width: 45%;
-    margin-left: auto;
-    margin-right: auto;
-    opacity: 25%;
+.lattern img,
+.mosque img {
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    max-width: 500px;
+    opacity: 0.2;
 }
 
-.card {
-    margin: 6px;
-    padding: 6px;
-    width: 104px;
-    border-radius: 24px;
-    text-align: center;
-    animation: pop-in 0.75s;
-}
-
-.d-flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 52px;
-}
-
-.ms-auto {
-    margin-left: auto;
-}
-
-.me-auto {
-    margin-right: auto;
-}
-
+/* --- Toggle Switch --- */
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .slider {
     position: absolute;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
     border-radius: 34px;
-    background-color: #000;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
 }
 
 .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 18px;
+    width: 18px;
     left: 4px;
     bottom: 4px;
+    background-color: white;
+    transition: .4s;
     border-radius: 50%;
-    background-color: #fff;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
 }
 
-input:checked+.slider {
-    background-color: #fff;
+input:checked + .slider {
+    background-color: #2196F3;
 }
 
-input:checked+.slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-    background-color: #000;
+input:checked + .slider:before {
+    transform: translateX(24px);
 }
 
+/* --- Animations --- */
 @keyframes pop-in {
-    0% {
-        transform: scale(0%);
-    }
-    100% {
-        transform: scale(100%);
-    }
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
-@keyframes up-down {
-    0% {
-        top: -50%;
-    }
+@keyframes swing {
+    from { transform: translateY(-5px); }
+    to { transform: translateY(5px); }
 }
 
-@keyframes down-up {
-    0% {
-        bottom: -100%;
+/* --- Mobile Specific Styles --- */
+@media (max-width: 600px) {
+    .mid h1 {
+        font-size: 3.5rem;
     }
-}
-
-@media (max-width: 1200px) {}
-
-@media (max-width: 992px) {
-    body .mosque img,
-    body .lattern img {
+    
+    .card {
+        width: 44%; /* Two cards per row */
+        margin-bottom: 10px;
+    }
+    
+    .lattern img, .mosque img {
         width: 90%;
-    }
-}
-
-@media (max-width: 768px) {
-    body #light .top {
-        background-color: #fff;
-    }
-    body #dark .top {
-        background-color: #111;
-    }
-    body .mid a {
-        display: inline-flex;
-    }
-    body .bottom a {
-        display: none;
-    }
-    body .lattern {
-        top: 96px;
-    }
-}
-
-@media (max-width: 576px) {
-    body .mid {
-        position: relative;
-        top: 50vh;
-    }
-    body .d-flex .card {
-        width: 30%;
+        opacity: 0.15;
     }
 }
